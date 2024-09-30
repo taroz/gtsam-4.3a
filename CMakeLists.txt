@@ -125,11 +125,11 @@ if(GTSAM_BUILD_PYTHON OR GTSAM_INSTALL_MATLAB_TOOLBOX)
     set(WRAP_PYTHON_VERSION ${GTSAM_PYTHON_VERSION}
         CACHE STRING "The Python version to use for wrapping")
     # Set the include directory for matlab.h
-    set(GTWRAP_INCLUDE_NAME "wrap")
+    set(GTWRAP_INCLUDE_NAME "gtwrap")
 
     # Copy matlab.h to the correct folder.
     configure_file(${PROJECT_SOURCE_DIR}/wrap/matlab.h
-               ${PROJECT_BINARY_DIR}/wrap/matlab.h COPYONLY)
+               ${PROJECT_BINARY_DIR}/${GTWRAP_INCLUDE_NAME}/matlab.h COPYONLY)
 
     add_subdirectory(wrap)
     list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/wrap/cmake")

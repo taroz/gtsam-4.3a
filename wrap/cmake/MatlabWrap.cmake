@@ -130,9 +130,9 @@ function(wrap_library_internal interfaceHeader moduleName linkLibraries extraInc
   get_filename_component(modulePath "${interfaceHeader}" PATH)
 
   # Paths for generated files
-  set(generated_files_path "${PROJECT_BINARY_DIR}/wrap/${moduleName}")
+  set(generated_files_path "${PROJECT_BINARY_DIR}/${GTWRAP_INCLUDE_NAME}/${moduleName}")
   set(generated_cpp_file "${generated_files_path}/${moduleName}_wrapper.cpp")
-  set(compiled_mex_modules_root "${PROJECT_BINARY_DIR}/wrap/${moduleName}_mex")
+  set(compiled_mex_modules_root "${PROJECT_BINARY_DIR}/${GTWRAP_INCLUDE_NAME}/${moduleName}_mex")
 
   message(STATUS "Building wrap module ${moduleName}")
 
@@ -326,7 +326,7 @@ endfunction()
 # Internal function that installs a wrap toolbox
 function(install_wrapped_library_internal interfaceHeader)
   get_filename_component(module "${interfaceHeader}" NAME_WE)
-  set(generated_files_path "${PROJECT_BINARY_DIR}/wrap/${module}")
+  set(generated_files_path "${PROJECT_BINARY_DIR}/${GTWRAP_INCLUDE_NAME}/${module}")
 
   # NOTE: only installs .m and mex binary files (not .cpp) - the trailing slash
   # on the directory name here prevents creating the top-level module name
